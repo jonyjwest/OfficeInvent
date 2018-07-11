@@ -1,0 +1,102 @@
+﻿/* Move down content because we have a fixed navbar that is 50px tall */
+body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+    font-family: Roboto,"Graphik Webfont", -apple-system, BlinkMacSystemFont, "Droid Sans", "Segoe UI", Helvetica, Arial, sans-serif !important;
+}
+h3{
+    color:#299cfc;
+    font-size:23px;
+}
+.header_background {
+  background-color:  #299cfc
+}
+/* Wrapping element */
+/* Set some basic padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.navbar-brand {
+padding:5px;
+
+}
+.leftBannerText {
+    font-size: 40px;
+    color: #fff;
+     margin-top:35px;
+   
+    float: right;
+    font-family:Roboto;
+    font-weight:600;
+    line-height:45px;
+
+}
+.leftBannerTextBelow {
+    font-size: 22px;
+    color: #fff;
+    margin-top: 45px;
+    float: right;
+    font-family: Roboto;
+    font-weight: 400;
+    line-height: 26px;
+}
+.grey_background {
+    display: block;
+    background-color: #f5f5f5;
+    height:255px;
+  
+}
+.col_single {
+    background-color: #fff;
+    padding: 25px;
+    margin-top:10px;
+    font-size: 17px;
+    line-height: 24px;
+    font-weight: 400;
+    color: #333333;
+   
+}
+
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1350px;
+    }
+}
+.btn-primary {
+    color: #299cfc;
+    background-color: #ffffff;
+    border-color: #ffffff;
+}
+    .navbar-nav {
+        float: right;
+        margin: 0;
+    }
+
+    .navbar-inverse {
+        background-color: #ffffff;
+        border-color: #ffffff;
+        font-size: 18px;
+        padding-top:6px;
+    }
+
+        .navbar-inverse .navbar-nav > li > a {
+            color: #333;
+        }
+    /* Set widths on the form inputs since otherwise they're 100% wide */
+    input,
+    select,
+    textarea {
+        max-width: 280px;
+    }
+
+    /* Responsive: Portrait tablets and up */
+    @media screen and (min-width: 768px) {
+        .jumbotron {
+            margin-top: 20px;
+        }
+
+        .body-content {
+            padding: 0;
+        }
+    }
