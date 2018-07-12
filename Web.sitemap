@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
+  <siteMapNode url="" title=""  description="">
+    <siteMapNode url="" title="Admin Site" description="Adminsite">
+      <siteMapNode url="Dashboard.aspx" title="Dashboard"  description="false" roles="Wholesaler,Retailer" resourceKey="fa fa-dashboard">
+      </siteMapNode>
+      <siteMapNode url="Notifications.aspx" title="Notifications"  description="false" roles="Wholesaler,Retailer" resourceKey="fa fa-bell-o">
+      </siteMapNode>
+
+
+      <siteMapNode url="~/Wholesaler/PostProduct.aspx#" title="Manage Posts"  description="true" roles="Wholesaler" resourceKey="fa fa-money">
+        <siteMapNode url="~/Wholesaler/PostProduct.aspx" title="Create Post"   roles="Wholesaler" />
+
+        <siteMapNode url="~/Wholesaler/ViewProduct.aspx" title="View Posts"   roles="Wholesaler" />
+
+
+      </siteMapNode>
+      <siteMapNode url="~/Wholesaler/Vieworders.aspx#"  title="Orders"  description="true" roles="Wholesaler" resourceKey="fa fa-shopping-cart">
+        <siteMapNode url="~/Wholesaler/Vieworders.aspx" title="View Orders"  roles="Wholesaler" />
+        <siteMapNode url="~/Wholesaler/SalesHistory.aspx" title="Sales History"  roles="Wholesaler" />
+       </siteMapNode>
+
+      <siteMapNode url="~/Wholesaler/ManageDeals.aspx#" title="Deals" description="true" roles="Wholesaler" resourceKey="fa fa-gift">
+        <siteMapNode  url="~/Wholesaler/ManageDeals.aspx" title="Manage Deals"  description="false" roles="Wholesaler"/>
+        <siteMapNode  url="~/Wholesaler/DealsTransactions.aspx" title="Deals Transactions"  description="false" roles="Wholesaler"/>
+        <siteMapNode  url="~/Wholesaler/DealHistory.aspx" title="Deals Transaction History"  description="false" roles="Wholesaler"/>
+        
+      </siteMapNode>
+       
+
+    
+
+      <siteMapNode url="~/Wholesaler/ManageRetailers.aspx#" title="Manage Retailers"  description="true" roles="Wholesaler" resourceKey="fa fa-users">
+        <siteMapNode url="~/Wholesaler/ManageRetailers.aspx" title="View Retailers"   roles="Wholesaler" />
+       
+        <siteMapNode url="~/Wholesaler/ImportRetailer.aspx" title="Retailers Bulk Upload"   roles="Wholesaler" />
+
+
+      </siteMapNode>
+
+      
+      
+      <siteMapNode url="~/Wholesaler/Updateinfo.aspx#" title="Settings"  description="true" roles="Wholesaler" resourceKey="fa fa-cog">
+        <siteMapNode url="~/Wholesaler/Updateinfo.aspx" title="Update Information"   roles="Wholesaler" />
+
+    </siteMapNode>
+      
+      
+      <!--<siteMapNode  url="~/Wholesaler/WindowShop.aspx" title="Manage Window Shopping"  description="false" roles="Wholesaler" resourceKey="fa fa-cog">
+     </siteMapNode>-->
+        <!--//Retailer-->
+    
+       
+        <siteMapNode url="~/Retailer/OrderSheet.aspx#" title="Orders"  description="true" roles="Retailer" resourceKey="fa fa-shopping-cart">
+          
+        <siteMapNode url="~/Retailer/OrderSheet.aspx" title="Create Order Sheet "  description="false" roles="Retailer" resourceKey="fa fa-table ">
+         </siteMapNode>
+          
+         <siteMapNode url="~/Retailer/ViewOrders.aspx" title="View Orders " description="false" roles="Retailer" resourceKey="fa fa-table ">
+           
+           
+       </siteMapNode>
+          <siteMapNode url="~/Retailer/MyRequest.aspx" title="Feed Request " description="false" roles="Retailer" resourceKey="fa fa-table ">
+          </siteMapNode>
+      </siteMapNode>
+
+
+      <siteMapNode url="~/Retailer/ViewDeals.aspx#" title="Deals" description="true" roles="Retailer" resourceKey="fa fa-gift">
+        <siteMapNode  url="~/Retailer/ViewDeals.aspx" title="View Deals"  description="false" roles="Retailer"/>
+       
+        <siteMapNode  url="~/Retailer/DealsHistory.aspx" title="Deals History"  description="false" roles="Retailer"/>
+        
+      </siteMapNode>
+
+      <siteMapNode url="~/Retailer/Updateinfo.aspx#" title="Settings"  description="true" roles="Retailer" resourceKey="fa fa-cog">
+        <siteMapNode url="~/Retailer/Updateinfo.aspx" title="Update Information"   roles="Retailer" />
+
+      </siteMapNode>
+    </siteMapNode>
+  </siteMapNode>
+</siteMap>

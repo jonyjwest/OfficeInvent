@@ -1,80 +1,46 @@
 ﻿<%@ Page Title="Register" Language="C#" MasterPageFile="~/Register.Master" AutoEventWireup="true" CodeFile="Register.aspx.cs" Inherits="Account_Register" %>
 
-<asp:Content runat="server" ID="BodyContent" ContentPlaceHolderID="MainContent">
-    <%--<h2><%: Title %>.</h2>
-    <p class="text-danger">
-        <asp:Literal runat="server" ID="ErrorMessage" />
-    </p>
+<%@ Register src="../ErrorHandler/ErrorControl.ascx" tagname="ErrorControl" tagprefix="uc1" %>
 
-    <div class="form-horizontal">
-        <h4>Create a new account.</h4>
-        <hr />
-        <asp:ValidationSummary runat="server" CssClass="text-danger" />
-        <div class="form-group">
-            <asp:Label runat="server" AssociatedControlID="UserName" CssClass="col-md-2 control-label">User name</asp:Label>
-            <div class="col-md-10">
-                <asp:TextBox runat="server" ID="UserName" CssClass="form-control" />
-                <asp:RequiredFieldValidator runat="server" ControlToValidate="UserName"
-                    CssClass="text-danger" ErrorMessage="The user name field is required." />
-            </div>
-        </div>
-        <div class="form-group">
-            <asp:Label runat="server" AssociatedControlID="Password" CssClass="col-md-2 control-label">Password</asp:Label>
-            <div class="col-md-10">
-                <asp:TextBox runat="server" ID="Password" TextMode="Password" CssClass="form-control" />
-                <asp:RequiredFieldValidator runat="server" ControlToValidate="Password"
-                    CssClass="text-danger" ErrorMessage="The password field is required." />
-            </div>
-        </div>
-        <div class="form-group">
-            <asp:Label runat="server" AssociatedControlID="ConfirmPassword" CssClass="col-md-2 control-label">Confirm password</asp:Label>
-            <div class="col-md-10">
-                <asp:TextBox runat="server" ID="ConfirmPassword" TextMode="Password" CssClass="form-control" />
-                <asp:RequiredFieldValidator runat="server" ControlToValidate="ConfirmPassword"
-                    CssClass="text-danger" Display="Dynamic" ErrorMessage="The confirm password field is required." />
-                <asp:CompareValidator runat="server" ControlToCompare="Password" ControlToValidate="ConfirmPassword"
-                    CssClass="text-danger" Display="Dynamic" ErrorMessage="The password and confirmation password do not match." />
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <asp:Button runat="server" OnClick="CreateUser_Click" Text="Register" CssClass="btn btn-default" />
-            </div>
-        </div>
-    </div>--%>
+<asp:Content runat="server" ID="BodyContent" ContentPlaceHolderID="MainContent">
+ 
 
 
 <div class="row">
     <div class="col-lg-12 col-offset-6 col-centered">
    <%-- <uc1:ErrorDisplay ID="ErrorDisplay1" runat="server" />--%>
-   <div class="col-lg-6" >
-    
+   <div class="col-lg-9" >
+      <uc1:ErrorControl ID="ErrorControl1" runat="server" />
         <div class="col-lg-6">
                         
                             <div class="form-group">
                                 <label runat="server">Full Name*</label>
-                               <input type="number" class="form-control" id="OperatorPhone" runat="server" required data-format="+234-ddd-ddd-dddd" />
-
+                                <asp:RequiredFieldValidator runat="server" ControlToValidate="txtFullName"
+                                CssClass="text-danger" Display="Dynamic" ErrorMessage="Full Name field is required." />
+                              
+                               <asp:TextBox runat="server" ID="txtFullName" CssClass="form-control" />
+                             
 
                             </div>
                              <div class="form-group">
                                 <label runat="server">Email</label>
-                                <asp:TextBox ID="TextBox1" runat="server" CssClass="form-control"></asp:TextBox>
+                                 <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ErrorMessage="Invalid email address" CssClass="text-danger" ControlToValidate="txtEmail" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"></asp:RegularExpressionValidator>
+                                <asp:TextBox ID="txtEmail" runat="server" CssClass="form-control"></asp:TextBox>
                             </div>
                              <div class="form-group">
                                 <label runat="server">Password</label>
-                                <asp:TextBox ID="TextBox2" runat="server" TextMode="Password" CssClass="form-control"></asp:TextBox>
+                                <asp:TextBox ID="txtPassword" runat="server" TextMode="Password" CssClass="form-control"></asp:TextBox>
                             </div>
 
                             <div class="form-group">
                                 <label runat="server">Phone *</label>
-                               <input type="number" class="form-control" id="Number1" runat="server" required data-format="+234-ddd-ddd-dddd" />
+                               <input type="number" class="form-control" id="txtPhone" runat="server" required data-format="+234-ddd-ddd-dddd" />
 
 
                             </div>
                             <div class="form-group">
                                 <label runat="server">Company Name</label>
-                                <asp:TextBox ID="txtEstablishmentName" runat="server" CssClass="form-control"></asp:TextBox>
+                                <asp:TextBox ID="txtCompanyName" runat="server" CssClass="form-control"></asp:TextBox>
                             </div>
                            
          
@@ -82,26 +48,39 @@
        <div class="col-lg-6">
             <div class="form-group">
                                 <label runat="server">Industry</label>
-                                <asp:DropDownList ID="ddlEstablishmentType" runat="server" CssClass="form-control" >
+                                <asp:DropDownList ID="ddlIndustry" runat="server" CssClass="form-control" >
                                    
                                 </asp:DropDownList>
                             </div>
                             <div class="form-group">
                                 <label runat="server">Company Size</label>
-                                <asp:TextBox ID="txtFirstName" runat="server" CssClass="form-control"></asp:TextBox>
+                               <asp:DropDownList ID="ddlCompSizes" runat="server" CssClass="form-control"  >
+                                    <asp:ListItem Value="1">Self Employed</asp:ListItem>
+                                    <asp:ListItem Value="2">1-10</asp:ListItem>
+                                    <asp:ListItem Value="3">11-50 </asp:ListItem>
+                                    <asp:ListItem Value="4">51-200</asp:ListItem>
+                                   <asp:ListItem Value="5">201-500</asp:ListItem>
+                                    <asp:ListItem Value="6">501-1000 </asp:ListItem>
+                                    <asp:ListItem Value="7">1000+</asp:ListItem>
+                                   
+                                </asp:DropDownList>
                             </div>
                             <div class="form-group">
                                 <label runat="server">Pain point you're looking to solve</label>
-                                 <asp:TextBox ID="txtContractAddress" runat="server" CssClass="form-control" TextMode="MultiLine"></asp:TextBox>
+                                 <asp:TextBox ID="txtProblemtosolve" runat="server" CssClass="form-control" TextMode="MultiLine"></asp:TextBox>
                             </div>
                             <div class="form-group">
                                 <label runat="server">How did you hear about us?</label>
-                                <asp:DropDownList ID="ddlSex" runat="server" CssClass="form-control"  >
+                                <asp:DropDownList ID="ddlAdvertSource" runat="server" CssClass="form-control"  >
+                                    <asp:ListItem Value="1">Facebook</asp:ListItem>
+                                    <asp:ListItem Value="2">Twitter</asp:ListItem>
+                                    <asp:ListItem Value="3">Google </asp:ListItem>
+                                    <asp:ListItem Value="4">Others</asp:ListItem>
                                    
                                 </asp:DropDownList>
                             </div>
            <div class="form-group">
-                <asp:Button ID="BtnSubmit" runat="server" Text="Submit" CssClass="btn btn-success btn-sm btn-block"  />
+                <asp:Button ID="BtnSubmit" runat="server" Text="Submit" CssClass="btn btn-success btn-sm btn-block" OnClick="CreateUser_Click"  />
            </div>
 
 
@@ -121,7 +100,7 @@
 
         </div>
                   
-
+</div>
  <script type="text/javascript">
      
       function ShowImagePreview(input) {

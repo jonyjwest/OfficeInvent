@@ -21,6 +21,7 @@ public partial class Account_Login : Page
                 ApplicationUser user = manager.Find(Email.Text, Password.Text);
                 if (user != null)
                 {
+                Session["LogedinuserId"] = user.Id;
                     IdentityHelper.SignIn(manager, user, RememberMe.Checked);
                     IdentityHelper.RedirectToReturnUrl(Request.QueryString["ReturnUrl"], Response);
                 }
