@@ -5,6 +5,7 @@ using System.Web.UI;
 using OfficeInvent3;
 using OfficeInvent.EF;
 using System.Web.UI.WebControls;
+using System.Threading.Tasks;
 
 public partial class Account_Register : Page
 {
@@ -14,6 +15,7 @@ public partial class Account_Register : Page
     {
         if (!IsPostBack)
         {
+           // RegisterAsyncTask(new PageAsyncTask(GetPWGsrvAsync));
             BindIndustry();
         }
 
@@ -74,7 +76,12 @@ public partial class Account_Register : Page
         
     }
 
-    protected void CreateUser_Click(object sender, EventArgs e)
+ 
+
+
+
+
+    protected async void CreateUser_Click(object sender, EventArgs e)
     {
         if (!ValidateControl())
         {
@@ -84,20 +91,21 @@ public partial class Account_Register : Page
         if (companyId > 0)
         {
             var manager = new UserManager();
-            var user = new ApplicationUser() { UserName = txtEmail.Text, CompanyId = companyId,FullName=txtFullName.Text,PhoneNumber= txtPhone.Value };
-            IdentityResult result = manager.Create(user, txtPassword.Text);
+            var user = new ApplicationUser() { UserName = txtEmail.Text, CompanyId = companyId, FullName = txtFullName.Text, PhoneNumber = txtPhone.Value };
+            IdentityResult result = await manager.CreateAsync(user, txtPassword.Text);
             if (result.Succeeded)
             {
+                await Util.SendEmail(txtPassword.Text, txtEmail.Text,txtFullName.Text);
                 Session["LogedinuserId"] = user.Id;
-                IdentityHelper.SignIn(manager, user, isPersistent: false);
-                IdentityHelper.RedirectToReturnUrl("~/Admin/Dashboard", Response);
+               // IdentityHelper.SignIn(manager, user, isPersistent: false);
+                Response.Redirect("Success.aspx?em=" + txtEmail.Text + "&" + "nm=" + txtFullName.Text);
+               // IdentityHelper.RedirectToReturnUrl("Login.aspx?em="+txtEmail.Text+"&"+"nm="+txtFullName.Text, Response);
             }
             else
             {
                 ErrorControl1.ShowError(result.Errors.FirstOrDefault());
-                
+
             }
         }
     }
-
 }

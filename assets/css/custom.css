@@ -248,12 +248,25 @@ a {
     -moz-border-radius: 0;
     border-radius: 0;
 }
-.ticker-bar
-{
+.navbar-default .navbar-brand {
+    font-family: 'Dosis', sans-serif !important;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 0px;
+    height: inherit;
+    font-size: 36px;
+    margin: 20px 0px;
+    margin-left: 0px;
+}
+
+.navbar-default .navbar-brand {
+    color: #5FCF80;
+}
+.ticker-bar {
     margin: 0;
     min-height: 4px;
     border: 0;
-    background: rgb(121, 166, 172);
+    background: #5FCF80;
     -webkit-border-radius: 0;
     -moz-border-radius: 0;
     border-radius: 0;

@@ -1,16 +1,31 @@
-﻿<%@ Page Title="Register" Language="C#" MasterPageFile="~/Register.Master" AutoEventWireup="true" CodeFile="Register.aspx.cs" Inherits="Account_Register" %>
+﻿<%@ Page Title="Register" Language="C#" MasterPageFile="~/Register.Master" AutoEventWireup="true" Async="true" CodeFile="Register.aspx.cs" Inherits="Account_Register" %>
 
-<%@ Register src="../ErrorHandler/ErrorControl.ascx" tagname="ErrorControl" tagprefix="uc1" %>
+
+
+<%@ Register src="ErrorHandler/ErrorControl.ascx" tagname="ErrorControl" tagprefix="uc1" %>
+
+
 
 <asp:Content runat="server" ID="BodyContent" ContentPlaceHolderID="MainContent">
  
+    <section id="contact" class="section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="header-section text-center">
+                    <h2>Registration</h2>
+                    <p>Register by filling the forms below.</p>
+                   
+                    
+                   
+                </div>
+                <div id="sendmessage">Your message has been sent. Thank you!</div>
+                <div id="errormessage"></div>
+                <form action="" method="post" role="form" class="contactForm">
 
 
-<div class="row">
     <div class="col-lg-12 col-offset-6 col-centered">
-   <%-- <uc1:ErrorDisplay ID="ErrorDisplay1" runat="server" />--%>
-   <div class="col-lg-9" >
-      <uc1:ErrorControl ID="ErrorControl1" runat="server" />
+  <uc1:ErrorControl ID="ErrorControl1" runat="server" />
+   
         <div class="col-lg-6">
                         
                             <div class="form-group">
@@ -80,27 +95,20 @@
                                 </asp:DropDownList>
                             </div>
            <div class="form-group">
-                <asp:Button ID="BtnSubmit" runat="server" Text="Submit" CssClass="btn btn-success btn-sm btn-block" OnClick="CreateUser_Click"  />
+                <asp:Button ID="BtnSubmit" runat="server" Text="Submit" CssClass="btn btn-success btn-sm btn-block"  OnClick="CreateUser_Click"  />
            </div>
 
 
     
        </div>
-                       <%--  <div class="col-lg-12" >
-                    <div class="col-lg-6">
-            
-                            </div>
-                              <div class="col-lg-6">
-                            
-            </div>
-                        </div>--%>
-        
-       
-                    </div>
+                     
 
         </div>
                   
-</div>
+      </form>
+                </div>
+            </div>
+        </section>
  <script type="text/javascript">
      
       function ShowImagePreview(input) {

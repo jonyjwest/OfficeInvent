@@ -168,7 +168,7 @@ box-shadow: 1px 2px 10px #ebecec;
                              
                                
                             </li>
-                             <li class="text-center" style="background:#008751;color:#fff; padding:10px; margin:10px 0">
+                             <li class="text-center" style="background:#5FCF80;color:#fff; padding:10px; margin:10px 0">
                                <strong>
                                    <asp:Label ID="lblCoyName" runat="server" ></asp:Label>
                                </strong>  
