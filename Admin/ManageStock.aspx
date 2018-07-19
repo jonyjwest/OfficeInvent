@@ -71,7 +71,29 @@
                                 <asp:DropDownList runat="server" ID="ddlVendor" CssClass="form-control"></asp:DropDownList>
                                 </div>
                             </div>
-                                
+                                   <div class="form-group" style="margin-left:auto;margin-right:auto;" >
+                               
+                                <div class="col-sm-4">
+                                    &nbsp;
+                                    </div>
+                                 <div class="col-sm-8">
+                                    <label for="filImage">
+                                        
+                                       
+                                       <span id="lblLogo">
+                                            Click to upload image
+                                        </span>  
+                                       <asp:Image style="display:block"   src="../assets/img/upload.png" id="UpLoadedPhoto" width="150" height="150" runat="server" clientidmode="Static" />
+                                     
+                                    
+                                    </label>
+                                     
+                                 </div>
+                                 
+                                    <div style="display:none;" >
+                                        <asp:FileUpload runat="server" ID="filImage" ClientIDMode="Static" onchange="ShowImagePreview(this);" ></asp:FileUpload>
+                                    </div>
+                         </div> 
                                 
                              <div class="form-group">
                             <div class="col-sm-8 text-right">
@@ -97,5 +119,39 @@
        </div>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="scriptsContentPlaceHolder" Runat="Server">
+    <script>
+
+          function ShowImagePreview(input) {
+              if (input.files && input.files[0]) {
+
+
+                  if (!(/\.(gif|GIF|jpg|JPG|jpeg|JPEG|png|PNG|bmp|BMP)$/i).test(input.value)) {
+
+                      if ($.browser.msie) {
+                          $('#filImage').replaceWith($('#filImage').clone());
+                      } else {
+                          $('#filImage').val('');
+                      }
+
+                      alert('Invalid Image ');
+                      return;
+                  }
+
+
+                  var reader = new FileReader();
+                  reader.onload = function (e) {
+                      $("#UpLoadedPhoto").show();
+                      $("#lblLogo").hide();
+
+                      $("#UpLoadedPhoto").attr('src', e.target.result);
+
+
+                  };
+
+                  reader.readAsDataURL(input.files[0]);
+              }
+          }
+
+ </script>
 </asp:Content>
 
