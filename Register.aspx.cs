@@ -15,8 +15,7 @@ public partial class Account_Register : Page
     {
         if (!IsPostBack)
         {
-           // RegisterAsyncTask(new PageAsyncTask(GetPWGsrvAsync));
-            BindIndustry();
+           BindIndustry();
         }
 
     }

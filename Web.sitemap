@@ -4,11 +4,9 @@
     <siteMapNode url="" title="Admin Site" description="Adminsite">
       <siteMapNode url="Dashboard.aspx" title="Dashboard"  description="false" roles="Wholesaler,Retailer" resourceKey="fa fa-dashboard">
       </siteMapNode>
-   
-
-
-      <siteMapNode url="~/Wholesaler/PostProduct.aspx#" title="Manage Stocks"  description="true" roles="Wholesaler" resourceKey="fa fa-money">
-        <siteMapNode url="~/Wholesaler/PostProduct.aspx" title="Create Stocks"   roles="Wholesaler" />
+ 
+      <siteMapNode url="~/Admin/ManageStock.aspx#" title="Manage Stocks"  description="true" roles="Wholesaler" resourceKey="fa fa-money">
+        <siteMapNode url="~/Admin/ManageStock.aspx" title="Create Stocks"   roles="Wholesaler" />
 
         <siteMapNode url="~/Wholesaler/ViewProduct.aspx" title="View Stocks"   roles="Wholesaler" />
 
@@ -41,7 +39,7 @@
 
       <siteMapNode url="~/Retailer/Updateinfo.aspx#" title="Settings"  description="true" roles="Retailer" resourceKey="fa fa-cog">
         <siteMapNode url="~/Retailer/Updateinfo.aspx" title="Update Profile"   roles="Retailer" />
-
+        <siteMapNode url="~/Settings/ManageCategory.aspx" title="Manage Category"   roles="Retailer" />
       </siteMapNode>
     </siteMapNode>
   </siteMapNode>
