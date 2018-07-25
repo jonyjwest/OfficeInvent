@@ -15,7 +15,7 @@ public partial class UserManagement_ManageUsers : System.Web.UI.Page
         if (!IsPostBack)
         {
             GetUsers();
-            LoadRoles();
+          
         }
 
     }
@@ -35,22 +35,7 @@ public partial class UserManagement_ManageUsers : System.Web.UI.Page
         }
     }
 
-    private void LoadRoles()
-    {
-        try
-        {
-            var lgtList = _db.AspNetRoles.ToList();
-            ddlRole.DataSource = lgtList;
-            ddlRole.DataTextField = "Name";
-            ddlRole.DataValueField = "Id";
-            ddlRole.DataBind();
-            ddlRole.Items.Insert(0, new ListItem("--Select Role--", "0"));
-        }
-        catch (Exception ex)
-        {
-
-        }
-    }
+   
 
    
     //        protected void btnDelete_Click(object sender, EventArgs e)

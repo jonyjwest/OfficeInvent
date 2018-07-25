@@ -2,7 +2,7 @@
 <siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
   <siteMapNode url="" title=""  description="">
     <siteMapNode url="" title="Admin Site" description="Adminsite">
-      <siteMapNode url="Dashboard.aspx" title="Dashboard"  description="false" roles="Wholesaler,Retailer" resourceKey="fa fa-dashboard">
+      <siteMapNode url="~/Admin/Dashboard.aspx" title="Dashboard"  description="false" roles="Wholesaler,Retailer" resourceKey="fa fa-dashboard">
       </siteMapNode>
  
       <siteMapNode url="~/Admin/ManageStock.aspx#" title="Manage Stocks"  description="true" roles="Wholesaler" resourceKey="fa fa-money">

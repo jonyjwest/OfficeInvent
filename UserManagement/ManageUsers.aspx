@@ -109,12 +109,7 @@
                                     </div>  
                                  </div>
                                            
-                                            <div class="form-group" runat="server" >
-                                                 <label for="ddRole" class="col-sm-3 control-label">Role: </label>
-                                                 <div class="col-sm-5">
-                                               <asp:DropDownList runat="server" id="ddlRole"  CssClass="form-control"  Width="100%" ClientIDMode="Static"></asp:DropDownList>
-                                            </div>
-                                        </div>
+                                           
 
                                           
                                             <div class="form-group" runat="server" >

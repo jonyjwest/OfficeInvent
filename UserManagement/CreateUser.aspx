@@ -106,19 +106,7 @@
                                                 ErrorMessage="The password and confirmation password do not match." />
                                         </div>
                                         </div>
-                                     <div class="form-group ">
-                                         <div class="col-sm-12">
-                                               <asp:DropDownList runat="server" id="ddlRole"  CssClass="form-control"  Width="100%" ClientIDMode="Static"></asp:DropDownList>
-                                            <asp:RequiredFieldValidator
-                                                runat="server"
-                                                Display="None"
-                                                ValidationGroup="register"
-                                                ControlToValidate="ddlRole"
-                                                ErrorMessage="Role is required"> </asp:RequiredFieldValidator>
-                                        </div>
-
-                                        
-                                    </div>
+                              
                                     
                                     <div class="form-group">
                                         <div class="col-sm-12">

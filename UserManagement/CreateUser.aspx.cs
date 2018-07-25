@@ -16,28 +16,13 @@ public partial class UserManagement_CreateUser : System.Web.UI.Page
     {
         if (!IsPostBack)
         {
-            LoadRoles();
+           
            
         }
 
     }
 
-    private void LoadRoles()
-    {
-        try
-        {
-            var lgtList = _db.AspNetRoles.ToList();
-            ddlRole.DataSource = lgtList;
-            ddlRole.DataTextField = "Name";
-            ddlRole.DataValueField = "Id";
-            ddlRole.DataBind();
-            ddlRole.Items.Insert(0, new ListItem("--Select Role--", "0"));
-        }
-        catch (Exception ex)
-        {
-
-        }
-    }
+  
 
 
   
@@ -63,7 +48,7 @@ public partial class UserManagement_CreateUser : System.Web.UI.Page
             if (result.Succeeded)
             {
                 
-                manager.AddToRole(user.Id, ddlRole.SelectedItem.Text);
+                manager.AddToRole(user.Id, "Staff");
 
                
                 await Util.SendEmail(txtPassword.Value, txtEmail.Value, txtFullname.Value);
