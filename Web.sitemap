@@ -20,9 +20,9 @@
 
 
       </siteMapNode>
-      <siteMapNode url="~/Wholesaler/Vieworders.aspx#"  title="Manage Staffs"  description="true" roles="Wholesaler" resourceKey="fa fa-shopping-cart">
-        <siteMapNode url="~/Wholesaler/Vieworders.aspx" title="Create Staff"  roles="Wholesaler" />
-        <siteMapNode url="~/Wholesaler/SalesHistory.aspx" title="View Staffs"  roles="Wholesaler" />
+      <siteMapNode url="~/UserManagement/CreateUser.aspx#"  title="Manage Staffs"  description="true" roles="Wholesaler" resourceKey="fa fa-shopping-cart">
+        <siteMapNode url="~/UserManagement/CreateUser.aspx" title="Create Staff"  roles="Wholesaler" />
+        <siteMapNode url="~/UserManagement/ManageUsers.aspx" title="View Staffs"  roles="Wholesaler" />
        </siteMapNode>
 
       <siteMapNode url="~/Wholesaler/ManageDeals.aspx#" title="Reporting" description="true" roles="Wholesaler" resourceKey="fa fa-gift">
