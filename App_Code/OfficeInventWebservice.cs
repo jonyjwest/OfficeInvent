@@ -83,7 +83,69 @@ public class OfficeInventWebservice : System.Web.Services.WebService
 
     }
 
+    [WebMethod]
+    public object GetTopUseItem(string duration)
+    {
+        try
+        {
+            
+            var reportList = new List<StockHistory>();
 
+            if (duration == "month")
+            {
+                var monthDate = DateTime.Now.Month;
+               
+                reportList = _db.StockHistories.OrderByDescending(m => m.Quantity).Where(m => m.DateCreated.Month == monthDate).Take(5).ToList();
+            }
+            else
+            {
+                var yearDate = DateTime.Now.Year;
+                reportList = _db.StockHistories.OrderByDescending(m=>m.Quantity).Where(m => m.DateCreated.Year == yearDate).Take(5).ToList();
+            }
+            var chartObjList = new List<CustomChart>();
+            foreach (var xx in _db.Inventories)
+            {
+
+                var reportsData = reportList.Where(m => m.InventoryId==xx.InventoryId).ToList();
+
+
+                if (reportsData.Any())
+                {
+                    var chartObj = new CustomChart
+                    {
+                        name = xx.Stock.Name,
+                        z = xx.Quantity
+
+                    };
+
+                    chartObjList.Add(chartObj);
+                }
+
+
+
+            }
+
+            return new
+            {
+                ReportList = chartObjList.OrderByDescending(m => m.z).Take(5)
+
+            };
+
+        }
+        catch (Exception ex)
+        {
+
+            return new
+            {
+
+                Error = "An error occurred , Please contact administrator"
+
+            };
+        }
+
+
+
+    }
 
 
 }

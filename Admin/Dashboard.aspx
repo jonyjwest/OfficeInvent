@@ -130,14 +130,30 @@
         font-size: 12px;
         line-height: normal;
     }
-   
+   .fc{
+      color:#00a551
+  }
+     .box-header.h2{
+         color: #00a551 !important;
+         text-shadow: none !important;
+         padding: 10px 15px 11px !important;
+     }
+     .box-header-dash{
+         background-color:#f7f7f7;
+          color:#00a551;
+          font-weight:bold;
+          padding:8px;
+          text-align:center;
+          border-radius:2px;
+          border:#ccc solid 1px;
+     }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="mainContentPlaceHolder" runat="server">
     
   <div class="row" >
        <div class="col-md-12">
-         <div class="col-md-4">
+         <div class="col-md-5">
             <div class="panel panel-success">
                 <div class="panel-heading" style="text-align: right; padding:5px 15px;">
                     Select a range: &nbsp;
@@ -154,42 +170,89 @@
               <div class="panel panel-success">
                 <div class="panel-heading" style="text-align: right; padding:5px 15px;">
                     Select a range: &nbsp;
-            <select id="range4" onchange="GetSalesGrowth(this.value)" style="border: 1px solid #aaa; margin: 2px 3px 0 0; -webkit-border-radius: 2px; cursor: pointer; width: 100px;" class="tftype2">
+            <select id="range5" onchange="getChartTopReportedProduct(this.value)" style="border: 1px solid #aaa; margin: 2px 3px 0 0; -webkit-border-radius: 2px; cursor: pointer; width: 100px;" class="tftype2">
                 <option value="month">This Month</option>
                 <option value="year" selected="selected">This Year</option>
             </select>
                 </div>
                 <div class="panel-body">
-                    <div id="ContainerSalesGrowth" style="min-width: 100%; height: 225px; margin: 0 auto"></div>
+                    <div id="ContainTopUse" style="min-width: 100%; height: 225px; margin: 0 auto"></div>
                 </div>
             </div>
         </div>
-        <div class="col-md-5">
-            <div class="panel panel-success">
-                <div class="panel-heading" style="text-align: right; padding:5px 15px;">
-                    Select a range: &nbsp;
-            <select id="range4" onchange="GetSalesGrowth(this.value)" style="border: 1px solid #aaa; margin: 2px 3px 0 0; -webkit-border-radius: 2px; cursor: pointer; width: 100px;" class="tftype2">
-                <option value="month">This Month</option>
-                <option value="year" selected="selected">This Year</option>
-            </select>
+        <div class="col-md-4">
+            <div class="panel panel-success" >
+                  <div class="panel-heading" style="text-align: right; padding:5px 15px;">
+                        <span class="box-title">Low Stock/Out of Stock Items</span>
+                    </div>
+                    <div class="panel-body"  style="min-width: 100%; height: 275px; margin: 0 auto">
+                        <asp:GridView ShowHeader="false"
+                            ID="grdStock" BackColor="White"
+                            runat="server"
+                            GridLines="None" 
+                            AutoGenerateColumns="False"
+                            AllowPaging="true"
+                            PageSize="15"
+                            EmptyDataRowStyle-CssClass="alert alert-danger text-center"
+                            CssClass="table table-condensed table-hover text-table table-striped">
+                            <Columns>
+                               
+                                <asp:TemplateField HeaderText="Stock">
+                                    <HeaderStyle CssClass="text-left" />
+                                    <ItemStyle CssClass="text-left" />
+                                    <ItemTemplate>
+                                         <%# DataBinder.Eval(Container.DataItem,"Stock.Name").ToString().ToUpper() %>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField HeaderText="Quantity">
+                                    <HeaderStyle CssClass="text-left" />
+                                    <ItemStyle CssClass="text-left" />
+                                    <ItemTemplate>
+                                     
+                                    <%# DataBinder.Eval(Container.DataItem,"Quantity").ToString().ToUpper() %>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                            </Columns>
+                        </asp:GridView>
+                    </div>
                 </div>
-                <div class="panel-body">
-                    <div id="ContainerSalesGrowth" style="min-width: 100%; height: 242px; margin: 0 auto"></div>
-                </div>
-            </div>
+            
 
-             <div class="panel panel-success">
-                <div class="panel-heading" style="text-align: right; padding:5px 15px;">
-                    Select a range: &nbsp;
-            <select id="range4" onchange="GetSalesGrowth(this.value)" style="border: 1px solid #aaa; margin: 2px 3px 0 0; -webkit-border-radius: 2px; cursor: pointer; width: 100px;" class="tftype2">
-                <option value="month">This Month</option>
-                <option value="year" selected="selected">This Year</option>
-            </select>
+            <div class="panel panel-success" >
+                  <div class="panel-heading" style="text-align: right; padding:5px 15px;">
+                        <span class="box-title">Item Request</span>
+                    </div>
+                    <div class="panel-body"  style="min-width: 100%; height: 275px; margin: 0 auto">
+                        <asp:GridView ShowHeader="false"
+                            ID="GrdItemRequest" BackColor="White"
+                            runat="server"
+                            GridLines="None" 
+                            AutoGenerateColumns="False"
+                            AllowPaging="true"
+                            PageSize="15"
+                            EmptyDataRowStyle-CssClass="alert alert-danger text-center"
+                            CssClass="table table-condensed table-hover text-table table-striped">
+                            <Columns>
+                               
+                                <asp:TemplateField HeaderText="From">
+                                    <HeaderStyle CssClass="text-left" />
+                                    <ItemStyle CssClass="text-left" />
+                                    <ItemTemplate>
+                                         <%# DataBinder.Eval(Container.DataItem,"AspNetUser.FullName").ToString().ToUpper() %>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField HeaderText="Quantity">
+                                    <HeaderStyle CssClass="text-left" />
+                                    <ItemStyle CssClass="text-left" />
+                                    <ItemTemplate>
+                                     
+                                    <%# DataBinder.Eval(Container.DataItem,"Quantity").ToString().ToUpper() %>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                            </Columns>
+                        </asp:GridView>
+                    </div>
                 </div>
-                <div class="panel-body">
-                    <div id="ContainerSalesGrowth" style="min-width: 100%; height: 225px; margin: 0 auto"></div>
-                </div>
-            </div>
         </div>
        
         <div class="col-md-3">
@@ -347,6 +410,116 @@
     </div>
 
 </div>
+
+    <script>
+      $(function () {
+            getChartTopReportedProduct("year");
+        });
+
+        function getChartTopReportedProduct(range) {
+
+            $.ajax(
+                {
+                    type: "POST",
+                    url: "<%: ResolveUrl("~/OfficeInventWebservice.asmx/GetTopUseItem") %>",
+
+                    data: JSON.stringify({ duration: range }),
+                    contentType: "application/json; charset=utf-8",
+                    async: true,
+                    cache: false,
+                    success: function (response) {
+
+                        if (response.d.Error != null && response.d.Error != "" && response.d.Error !== "undefined") {
+
+                            return;
+                        }
+
+                        renderChartDataTopReportedProduct(response);
+
+                    }
+                });
+
+        }
+
+        function renderChartDataTopReportedProduct(response) {
+            var reportList = response.d.ReportList;
+           
+            var options = {
+                chart: {
+                    type: 'column',
+
+                    renderTo: 'ContainTopUse'
+                },
+                title: {
+                    text: ''
+                },
+                subtitle: {
+                    text: ''
+                },
+                xAxis: {
+                    type:'category',
+                    
+                    rotation: -45,
+                    style: {
+                        fontSize: '13px',
+                        fontFamily: 'Verdana, sans-serif'
+                    }
+                },
+                yAxis: {
+                    min: 0,
+                    title: {
+                        text: 'No.'
+                    }
+                },
+                legend: {
+                    enabled: false
+                },
+                tooltip: {
+                    headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                    pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                    '<td style="padding:0"><b>{point.y} </b></td></tr>',
+                    footerFormat: '</table>',
+                    shared: true,
+                    useHTML: true
+                },
+                plotOptions: {
+                    column: {
+                        pointPadding: 0.2,
+                        borderWidth: 0
+                    }
+                },
+                series: [{
+                    name: 'No. of times reported',
+                    data: [],
+              
+                   
+
+
+                }]
+            };
+
+            for (var i = 0; i < reportList.length; i++) {
+                var f = [];
+                f.push(reportList[i].name);
+                f.push(reportList[i].z)
+                var xx = f;
+                options.series[0].data.push(xx);
+
+            }
+            //for (var j = 0; j < reportList.length; j++) {
+            //    options.series[0].data.push(reportList[j].z);
+            //}
+
+            var chart = new Highcharts.Chart(options);
+
+        }
+
+
+    
+
+
+    
+</script>
  <script>
         $(function () {
             //getChartDataProduct("month");
