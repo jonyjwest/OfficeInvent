@@ -122,7 +122,7 @@ box-shadow: 1px 2px 10px #ebecec;
                         <!-- start: User Dropdown -->
                         <li class="dropdown hidden-xs">
 
-                            <asp:Label ID="UsernameLabel" CssClass="label user-label" style="color:#5FCF80" runat="server"><%: Context.User.Identity.GetUserName()  %>  </asp:Label>
+                            <asp:Label ID="UsernameLabel" CssClass="label user-label" style="color:#00A651" runat="server"><%: Context.User.Identity.GetUserName()  %>  </asp:Label>
                         </li>
                         <li class="">
                             <span id="logout" class="btn btn-sm btn-success btn-logout"><i class="fa fa-sign-out"></i>&nbsp; <b>Logout</b></span>
@@ -165,9 +165,9 @@ box-shadow: 1px 2px 10px #ebecec;
                              
                                
                             </li>
-                             <li class="text-center" style="background:#32b85a;color:#fff; padding:10px; margin:10px 0">
+                             <li class="text-center" style="background:#00A651;color:#fff; padding:10px; margin:10px 0">
                                <strong>
-                                   <asp:Label ID="lblCoyName" runat="server" ></asp:Label>
+                                   <asp:Label ID="lblCoyName" Text="Adeson & Co" runat="server" ></asp:Label>
                                </strong>  
                                  </li>
                            <%= menuGenerator %>
@@ -202,7 +202,7 @@ box-shadow: 1px 2px 10px #ebecec;
                         <h3 class="modal-title" id="confirmLogoutModalLabel"><b>Logout ?</b></h3>
                     </div>
                     <div class="modal-body">
-                        Are you sure you want to logout from eMedrep ?
+                        Are you sure you want to logout from OfficeInvent3 ?
                     
                     </div>
                     <div class="modal-footer">

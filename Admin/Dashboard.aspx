@@ -153,22 +153,10 @@
     
   <div class="row" >
        <div class="col-md-12">
-         <div class="col-md-5">
-            <div class="panel panel-default">
-                <div class="panel-heading" style="text-align: right; padding:5px 15px;">
-                    Select a range: &nbsp;
-            <select id="range4" onchange="GetICategogry(this.value)" style="border: 1px solid #aaa; margin: 2px 3px 0 0; -webkit-border-radius: 2px; cursor: pointer; width: 100px;" class="tftype2">
-                <option value="month">This Month</option>
-                <option value="year" selected="selected">This Year</option>
-            </select>
-                </div>
-                <div class="panel-body">
-                    <div id="ContainerCategory" style="min-width: 100%; height: 243px; margin: 0 auto"></div>
-                </div>
-            </div>
+         <div class="col-md-6">
 
               <div class="panel panel-default">
-                <div class="panel-heading" style="text-align: right; padding:5px 15px;">
+                <div class="panel-heading" style="text-align: right; padding:5px 15px;color:#00a551">
                     Select a range: &nbsp;
             <select id="range5" onchange="getChartTopReportedProduct(this.value)" style="border: 1px solid #aaa; margin: 2px 3px 0 0; -webkit-border-radius: 2px; cursor: pointer; width: 100px;" class="tftype2">
                 <option value="month">This Month</option>
@@ -176,54 +164,31 @@
             </select>
                 </div>
                 <div class="panel-body">
-                    <div id="ContainTopUse" style="min-width: 100%; height: 225px; margin: 0 auto"></div>
+                    <div id="ContainTopUse" style="min-width: 100%; height: 300px; margin: 0 auto"></div>
                 </div>
             </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading" style="text-align: right; padding:5px 15px;color:#00a551">
+                    Select a range: &nbsp;
+            <select id="range4" onchange="GetICategogry(this.value)" style="border: 1px solid #aaa; margin: 2px 3px 0 0; -webkit-border-radius: 2px; cursor: pointer; width: 100px;" class="tftype2">
+                <option value="month">This Month</option>
+                <option value="year" selected="selected">This Year</option>
+            </select>
+                </div>
+                <div class="panel-body">
+                    <div id="ContainerCategory" style="min-width: 100%; height: 300px; margin: 0 auto"></div>
+                </div>
+            </div>
+
         </div>
         <div class="col-md-4">
-            <div class="panel panel-default" >
-                  <div class="panel-heading" style="text-align: right; padding:5px 15px;">
-                        <span class="box-title">Low Stock/Out of Stock Items</span>
+           <div class="box box-primary" style="margin-bottom:15px;">
+                    <div  class="box-header-dash">
+                        <span class="box-title">Recent Request</span>
                     </div>
-                    <div class="panel-body"  style="min-width: 100%; height: 275px; margin: 0 auto">
-                        <asp:GridView ShowHeader="false"
-                            ID="grdStock" BackColor="White"
-                            runat="server"
-                            GridLines="None" 
-                            AutoGenerateColumns="False"
-                            AllowPaging="true"
-                            PageSize="15"
-                            EmptyDataRowStyle-CssClass="alert alert-danger text-center"
-                            CssClass="table table-condensed table-hover text-table table-striped">
-                            <Columns>
-                               
-                                <asp:TemplateField HeaderText="Stock">
-                                    <HeaderStyle CssClass="text-left" />
-                                    <ItemStyle CssClass="text-left" />
-                                    <ItemTemplate>
-                                         <%# DataBinder.Eval(Container.DataItem,"Stock.Name").ToString().ToUpper() %>
-                                    </ItemTemplate>
-                                </asp:TemplateField>
-                                <asp:TemplateField HeaderText="Quantity">
-                                    <HeaderStyle CssClass="text-left" />
-                                    <ItemStyle CssClass="text-left" />
-                                    <ItemTemplate>
-                                     
-                                    <%# DataBinder.Eval(Container.DataItem,"Quantity").ToString().ToUpper() %>
-                                    </ItemTemplate>
-                                </asp:TemplateField>
-                            </Columns>
-                        </asp:GridView>
-                    </div>
-                </div>
-            
-
-            <div class="panel panel-default" >
-                  <div class="panel-heading" style="text-align: right; padding:5px 15px;">
-                        <span class="box-title">Item Request</span>
-                    </div>
-                    <div class="panel-body"  style="min-width: 100%; height: 275px; margin: 0 auto">
-                        <asp:GridView ShowHeader="false"
+                    <div class="box-body" style="border:#ccc solid 1px;height:328px">
+                        <asp:GridView ShowHeader="true"
                             ID="GrdItemRequest" BackColor="White"
                             runat="server"
                             GridLines="None" 
@@ -249,36 +214,80 @@
                                     <%# DataBinder.Eval(Container.DataItem,"Quantity").ToString().ToUpper() %>
                                     </ItemTemplate>
                                 </asp:TemplateField>
+                                 <asp:TemplateField HeaderText="Quantity">
+                                    <HeaderStyle CssClass="text-left" />
+                                    <ItemStyle CssClass="text-left" />
+                                    <ItemTemplate>
+                                 <asp:LinkButton ID="btnEdit" CommandArgument='<%#Eval("UserRequestId") %>'  ClientIDMode="Static" CausesValidation="False"    CssClass="btn btn-xs btn-success" runat="server"><i class="fa fa-edit"></i>Respond</asp:LinkButton> 
+                                       </ItemTemplate>
+                                     </asp:TemplateField>
+                            </Columns>
+                        </asp:GridView>
+                      
+                    </div>
+                </div>
+            
+
+           <div class="box box-primary" >
+                    <div  class="box-header-dash">
+                        <span class="box-title">Item out of Stock</span>
+                    </div>
+                    <div class="box-body" style="border:#ccc solid 1px;height:328px">
+                          <asp:GridView ShowHeader="false"
+                            ID="grdStock" BackColor="White"
+                            runat="server"
+                            GridLines="None" 
+                            AutoGenerateColumns="False"
+                            AllowPaging="true"
+                            PageSize="15"
+                            EmptyDataRowStyle-CssClass="alert alert-danger text-center"
+                            CssClass="table table-condensed table-hover text-table table-striped">
+                            <Columns>
+                               
+                                <asp:TemplateField HeaderText="Stock">
+                                    <HeaderStyle CssClass="text-left" />
+                                    <ItemStyle CssClass="text-left" />
+                                    <ItemTemplate>
+                                         <%# DataBinder.Eval(Container.DataItem,"Stock.Name").ToString().ToUpper() %>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField HeaderText="Quantity">
+                                    <HeaderStyle CssClass="text-left" />
+                                    <ItemStyle CssClass="text-left" />
+                                    <ItemTemplate>
+                                     <span class="label label-warning">
+                                    <%# DataBinder.Eval(Container.DataItem,"Quantity").ToString().ToUpper() %>
+                                         </span>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
                             </Columns>
                         </asp:GridView>
                     </div>
                 </div>
         </div>
        
-        <div class="col-md-3">
+        <div class="col-md-2">
             
          
-                <div class="panel panel-success">
+                <div class="panel panel-default">
                     <div class="panel-heading">
                         <div class="row">
                             <div class="col-xs-3">
-                                <i class="fa fa-users fa-3x"></i>
+                                <i class="fa fa-outdent fa-3x" style="color:#00a551"></i>
                             </div>
                             <div class="col-xs-9 text-right">
                                 <div class="huge" id="spnCustomers" runat="server">
                                     <b>
-                                        <asp:Label ID="lblStep" runat="server"></asp:Label><asp:Label ID="lblCheckoutItem" Style="font-size: 11px" runat="server"></asp:Label>
+                                        <asp:Label ID="lblStep" runat="server"></asp:Label><asp:Label ID="lblCheckoutItem" Style="font-size: 15px" runat="server">3</asp:Label>
                                     </b>
                                 </div>
-                                <div>
-                                    Check out items (Today)
-                                </div>
+                               
                             </div>
                         </div>
                     </div>
                     <a href="Wholesaler/ManageRetailers.aspx">
-                        <div class="panel-footer" style="background-color: #c3dcba; border-top: 1px solid #c3dcba;">
-                            <span class="pull-left">View Details</span>
+                        <div class="panel-footer" style=" border-top: 1px solid #c3dcba;">
+                            <span class="pull-left"> Check out items</span>
                             <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                             <div class="clearfix"></div>
                         </div>
@@ -286,93 +295,65 @@
                 </div>
            
 
-                <div class="panel panel-info">
+                <div class="panel panel-default">
                     <div class="panel-heading">
                         <div class="row">
                             <div class="col-xs-3">
-                                 <i class="fa fa-archive fa-3x" aria-hidden="true"></i>
+                                 <i class="fa fa-archive fa-3x"  style="color:#00a551" aria-hidden="true"></i>
                             </div>
                             <div class="col-xs-9 text-right">
-                                <div class="huge" id="spnTOrders" runat="server"><b>Step
+                                <div class="huge" id="spnTOrders" runat="server"><b>3
                                     <asp:Label ID="Label3" runat="server"></asp:Label><asp:Label ID="lblOutofStock" Style="font-size: 11px" runat="server"></asp:Label></b></div>
-                                <div>
-                                    Items out of stock
-                                </div>
+                               
                             </div>
                         </div>
                     </div>
                     <a href="Wholesaler/Vieworders.aspx">
-                        <div class="panel-footer" style="background-color: #c3dbe7; border-top: 1px solid #c3dbe7;">
-                            <span class="pull-left">View Details</span>
+                        <div class="panel-footer" style=" border-top: 1px solid #c3dbe7;">
+                            <span class="pull-left">Out of stock</span>
                             <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                             <div class="clearfix"></div>
                         </div>
                     </a>
                 </div>
-               <div class="panel panel-success">
+               <div class="panel panel-default">
                     <div class="panel-heading">
                         <div class="row">
                             <div class="col-xs-3">
-                                <i class="fa fa-pencil-square fa-3x" aria-hidden="true"></i>
+                                <i class="fa fa-level-down fa-3x" aria-hidden="true" style="color:#32b85a"></i>
                             </div>
                             <div class="col-xs-9 text-right">
-                                <div class="huge" id="spnPending" runat="server"><b>Step
+                                <div class="huge" id="spnPending" runat="server"><b>3
                                     <asp:Label ID="Label5" runat="server"></asp:Label><asp:Label ID="lblLowStock" Style="font-size: 11px" runat="server"></asp:Label></b></div>
-                                <div>
-                                   Low stock items
-                                </div>
+                                
                             </div>
                         </div>
                     </div>
                     <a href="Wholesaler/Vieworders.aspx">
-                        <div class="panel-footer" style="background-color: #c3dcba; border-top: 1px solid #c3dcba;">
-                            <span class="pull-left">View Details</span>
+                        <div class="panel-footer" style=" border-top: 1px solid #c3dcba;">
+                            <span class="pull-left"> Low stock</span>
                             <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                             <div class="clearfix"></div>
                         </div>
                     </a>
                 </div>
             
-             <div class="panel panel-info">
+           
+                <div class="panel panel-default">
                     <div class="panel-heading">
                         <div class="row">
                             <div class="col-xs-3">
-                                 <i class="fa fa-archive fa-3x" aria-hidden="true"></i>
+                                <i class="fa fa-bell-o fa-3x " style="color:red" aria-hidden="true"></i>
                             </div>
                             <div class="col-xs-9 text-right">
-                                <div class="huge" id="Div1" runat="server"><b>Step
-                                    <asp:Label ID="Label1" runat="server"></asp:Label><asp:Label ID="Label2" Style="font-size: 11px" runat="server"></asp:Label></b></div>
-                                <div>
-                                    Items out of stock
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <a href="Wholesaler/Vieworders.aspx">
-                        <div class="panel-footer" style="background-color: #c3dbe7; border-top: 1px solid #c3dbe7;">
-                            <span class="pull-left">View Details</span>
-                            <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                            <div class="clearfix"></div>
-                        </div>
-                    </a>
-                </div>
-                <div class="panel panel-danger">
-                    <div class="panel-heading">
-                        <div class="row">
-                            <div class="col-xs-3">
-                                <i class="fa fa-bell-o fa-3x" aria-hidden="true"></i>
-                            </div>
-                            <div class="col-xs-9 text-right">
-                                <div class="huge" id="lblPermision" runat="server" style="color: red"><b>Step </b></div>
-                                <div>
-                                   Waiting Permission
-                                </div>
+                                <div class="huge" id="lblPermision" runat="server" style="color: red"><b>2 </b></div>
+                              
                             </div>
                         </div>
                     </div>
                     <a href="../Notifications.aspx">
-                        <div class="panel-footer" style="background-color: #e5c5c5; border-top: 1px solid #e5c5c5;">
-                            <span class="pull-left">View Details</span>
+                        <div class="panel-footer" style=" border-top: 1px solid #c3dcba;">
+                            <span class="pull-left">Notifications</span>
                             <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                             <div class="clearfix"></div>
                         </div>
@@ -389,7 +370,7 @@
      <div class="row" >
     <div class="col-md-12">
        
-            <div class="panel panel-default" style="margin-top: 20px;">
+            <div class="panel panel-success" style="margin-top: 20px;">
                 <div class="panel-heading" style="text-align: right; padding:5px 15px;">
                     Select a range: &nbsp;
             <select id="range3" onchange="getChartDataRegistration(this.value)" style="border: 1px solid #aaa; margin: 2px 3px 0 0; -webkit-border-radius: 2px; cursor: pointer; width: 100px;" class="tftype2">
@@ -491,6 +472,7 @@
                 series: [{
                     name: 'Quantity Used',
                     data: [],
+                     color: '#78cd51'
               
                    
 

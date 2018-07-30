@@ -1,7 +1,10 @@
 ﻿body {
     background: none repeat scroll 0% 0% #fefefe;
 }
-.alert-main {
+#content {
+    background-color:#ffffff
+}
+    .alert-main {
   background-image: -webkit-gradient(linear, left 0%, left 100%, from(#bfeae0), to(#bfeae0));
   background-image: -webkit-linear-gradient(top, #bfeae0 0%, #e1ede 100%);
   background-image: -moz-linear-gradient(top, #bfeae0 0%, #e1ede 100%);
@@ -631,7 +634,7 @@ table tbody tr td table tbody tr td a:hover {
 .nav-tabs.nav-stacked > li > a
 {
     padding: 10px 15px;
-    color: #4d8267;
+    color: #00a651;
     /*border: 0;*/
     border-bottom:1px solid #e9e9e9;
     background: #fafafa;
