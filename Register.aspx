@@ -8,24 +8,18 @@
 
 <asp:Content runat="server" ID="BodyContent" ContentPlaceHolderID="MainContent">
  
-    <section id="contact" class="section-padding">
-        <div class="container">
-            <div class="row">
-                <div class="header-section text-center">
-                    <h2>Registration</h2>
-                    <p>Register by filling the forms below.</p>
-                   
-                    
-                   
-                </div>
-                <div id="sendmessage">Your message has been sent. Thank you!</div>
-                <div id="errormessage"></div>
-                <form action="" method="post" role="form" class="contactForm">
-
-
-    <div class="col-lg-12 col-offset-6 col-centered">
+     <div class="login-panel panel panel-default"  style="margin-top:70px; width: 100% ;
+  margin-left: auto ;
+  margin-right: auto ;">
+                    <div class="panel-heading">
+                        <h3 class="panel-title text-center">   Register by filling the forms below.</h3>
+                    </div>
+                    <div class="panel-body">
+              
+                     <div class="col-md-8 col-md-offset-2 col-centered" style="">
   <uc1:ErrorControl ID="ErrorControl1" runat="server" />
-   
+       
+            
         <div class="col-lg-6">
                         
                             <div class="form-group">
@@ -82,7 +76,7 @@
                             </div>
                             <div class="form-group">
                                 <label runat="server">Pain point you're looking to solve</label>
-                                 <asp:TextBox ID="txtProblemtosolve" runat="server" CssClass="form-control" TextMode="MultiLine"></asp:TextBox>
+                                 <asp:TextBox ID="txtProblemtosolve" Rows="4" runat="server" CssClass="form-control" TextMode="MultiLine"></asp:TextBox>
                             </div>
                             <div class="form-group">
                                 <label runat="server">How did you hear about us?</label>
@@ -105,10 +99,11 @@
 
         </div>
                   
-      </form>
+     
                 </div>
+         <span style="clear:both"></span>
             </div>
-        </section>
+      
  <script type="text/javascript">
      
       function ShowImagePreview(input) {

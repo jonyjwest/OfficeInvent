@@ -6,10 +6,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Mentor Education Bootstrap Theme</title>
+  <title>OfficeInvent3</title>
   <meta name="description" content="Free Bootstrap Theme by BootstrapMade.com">
   <meta name="keywords" content="free website templates, free bootstrap themes, free template, free bootstrap, free website template">
-
+     <link rel="icon"  type="image/png"  href="favicon.png" />
   <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans|Candal|Alegreya+Sans">
   <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
   <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
@@ -32,7 +32,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">Office<span>Invent3</span></a>
+                <a class="navbar-brand" href="index.html"><img src="../image/logo.png" /> </a>
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav navbar-right">
@@ -57,7 +57,7 @@
                 <div class="row">
                     <div class="banner-text text-center">
                         <div class="text-border">
-                            <h2 class="text-dec">Trust & Quality</h2>
+                           <%-- <h2 class="text-dec">Trust & Quality</h2>--%>
                         </div>
                         <div class="intro-para text-center quote">
                             <p class="big-text">Run the world's best asset tracking software.</p>

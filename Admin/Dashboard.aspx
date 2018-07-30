@@ -154,7 +154,7 @@
   <div class="row" >
        <div class="col-md-12">
          <div class="col-md-5">
-            <div class="panel panel-success">
+            <div class="panel panel-default">
                 <div class="panel-heading" style="text-align: right; padding:5px 15px;">
                     Select a range: &nbsp;
             <select id="range4" onchange="GetICategogry(this.value)" style="border: 1px solid #aaa; margin: 2px 3px 0 0; -webkit-border-radius: 2px; cursor: pointer; width: 100px;" class="tftype2">
@@ -167,7 +167,7 @@
                 </div>
             </div>
 
-              <div class="panel panel-success">
+              <div class="panel panel-default">
                 <div class="panel-heading" style="text-align: right; padding:5px 15px;">
                     Select a range: &nbsp;
             <select id="range5" onchange="getChartTopReportedProduct(this.value)" style="border: 1px solid #aaa; margin: 2px 3px 0 0; -webkit-border-radius: 2px; cursor: pointer; width: 100px;" class="tftype2">
@@ -181,7 +181,7 @@
             </div>
         </div>
         <div class="col-md-4">
-            <div class="panel panel-success" >
+            <div class="panel panel-default" >
                   <div class="panel-heading" style="text-align: right; padding:5px 15px;">
                         <span class="box-title">Low Stock/Out of Stock Items</span>
                     </div>
@@ -218,7 +218,7 @@
                 </div>
             
 
-            <div class="panel panel-success" >
+            <div class="panel panel-default" >
                   <div class="panel-heading" style="text-align: right; padding:5px 15px;">
                         <span class="box-title">Item Request</span>
                     </div>
@@ -389,7 +389,7 @@
      <div class="row" >
     <div class="col-md-12">
        
-            <div class="panel panel-info" style="margin-top: 20px;">
+            <div class="panel panel-default" style="margin-top: 20px;">
                 <div class="panel-heading" style="text-align: right; padding:5px 15px;">
                     Select a range: &nbsp;
             <select id="range3" onchange="getChartDataRegistration(this.value)" style="border: 1px solid #aaa; margin: 2px 3px 0 0; -webkit-border-radius: 2px; cursor: pointer; width: 100px;" class="tftype2">
@@ -489,7 +489,7 @@
                     }
                 },
                 series: [{
-                    name: 'No. of times reported',
+                    name: 'Quantity Used',
                     data: [],
               
                    

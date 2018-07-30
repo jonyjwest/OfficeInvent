@@ -4,16 +4,17 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title>Login</title>
+<title><%: Page.Title %> - OfficeInvent3</title>
      <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans|Candal|Alegreya+Sans">
   <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
   <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="css/imagehover.min.css">
   <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="icon"  type="image/png"  href="favicon.png" />
 </head>
 <body>
     <!--Navigation bar-->
-    <nav class="navbar navbar-default navbar-fixed-top">
+   <%-- <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -30,7 +31,7 @@
                 </ul>
             </div>
         </div>
-    </nav>
+    </nav>--%>
     <!--/ Navigation bar-->
      <div class="row">
             <div class="col-md-4 col-md-offset-4" style="">
@@ -39,13 +40,18 @@
                  <div class="modal-dialog modal-sm">
 
             <div class="modal-content">
+              
                 <div class="modal-header">
-                   
-                    <h4 class="modal-title text-center form-title">Login</h4>
+                  
+                    <a  href="Default.aspx" style="padding:2px; display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;"> <img src="../image/logo.png" /></a>
                 </div>
                 <div class="modal-body padtrbl">
 
                     <div class="login-box-body">
+                       
                         <p class="login-box-msg">Sign in to start your session</p>
 						 <asp:PlaceHolder runat="server" ID="ErrorMessage" Visible="false">
                         <p class="text-danger">
