@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNet.Identity;
+using OfficeInvent.EF;
 using OfficeInvent3;
 using System;
 using System.Collections.Generic;
@@ -9,6 +10,7 @@ using System.Web.UI.WebControls;
 
 public partial class Login : System.Web.UI.Page
 {
+    OfficeInvent3Entities _db = new OfficeInvent3Entities();
     protected void Page_Load(object sender, EventArgs e)
     {
 
@@ -27,6 +29,7 @@ public partial class Login : System.Web.UI.Page
                 {
                     Session["LogedinuserId"] = user.Id;
                     Session["CompanyId"] = user.CompanyId;
+                    Session["CompanyName"] = _db.Companies.FirstOrDefault(m => m.CompanyId == user.CompanyId).Name;
                     IdentityHelper.SignIn(manager, user, RememberMe.Checked);
                     Response.Redirect("Admin/Dashboard.aspx");
                 }
