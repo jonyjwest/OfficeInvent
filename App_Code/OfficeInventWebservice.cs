@@ -27,36 +27,49 @@ public class OfficeInventWebservice : System.Web.Services.WebService
 
 
 
-    [WebMethod]
-    public object StockByCategoryPie(string type)
+    [WebMethod(EnableSession = true)]
+    public object StockByCategoryPie(string duration)
     {
         try
         {
+            if (Session["CompanyId"] == null)
+            {
+                return new
+                {
+
+                    Error = "You sessin has expired"
+
+                };
+
+            }
+            int companyId = int.Parse(Session["CompanyId"].ToString());
             var customPgharmList = new List<CustomChart>();
 
             foreach (var categoryObj in _db.Categories)
             {
-                var pharmacies = new List<Stock>();
+                var stockList = new List<Stock>();
 
-                //if (type == "1")
-                //{
-                //    pharmacies = _db.Tickets.Where(m => m.Status == (int)status).ToList();
-                //}
-                //else if (type == "2")
-                //{
-                //    pharmacies = _db.Tickets.Where(m => m.Status == (int)status).ToList();
-                //}
-                //else if (type == "3")
-                //{
-                //    pharmacies = _db.Tickets.Where(m => m.Status == (int)status).ToList();
-                //}
-                //else
-                //{
-                pharmacies = _db.Stocks.Where(m => m.CategoryId == categoryObj.CategoryId).ToList();
-                // }
+
+                if (duration == "month")
+                {
+                    var monthDate = DateTime.Now.Month;
+
+                    stockList = _db.Stocks.Where(m => m.DateCreated.Month == monthDate && m.CompanyId == companyId && m.CategoryId==categoryObj.CategoryId).ToList();
+                }
+                else if (duration == "year")
+                {
+                    var yearDate = DateTime.Now.Year;
+                    stockList = _db.Stocks.Where(m => m.DateCreated.Year == yearDate && m.CompanyId == companyId && m.CategoryId == categoryObj.CategoryId).ToList();
+                }
+                else
+                {
+                    stockList = _db.Stocks.Where(m => m.CompanyId == companyId && m.CategoryId == categoryObj.CategoryId).ToList();
+                }
+               
+           
                 var customStd1 = new CustomChart();
                 customStd1.name = categoryObj.Name.ToString();
-                customStd1.x = pharmacies.Count();
+                customStd1.x = stockList.Count();
                 customPgharmList.Add(customStd1);
 
             }
@@ -83,24 +96,38 @@ public class OfficeInventWebservice : System.Web.Services.WebService
 
     }
 
-    [WebMethod]
+    [WebMethod(EnableSession = true)]
     public object GetTopUseItem(string duration)
     {
         try
         {
-            
+            if (Session["CompanyId"] == null)
+            {
+                return new
+                {
+
+                    Error = "You sessin has expired"
+
+                };
+              
+            }
+            int companyId = int.Parse(Session["CompanyId"].ToString());
             var reportList = new List<StockHistory>();
 
             if (duration == "month")
             {
                 var monthDate = DateTime.Now.Month;
                
-                reportList = _db.StockHistories.OrderByDescending(m => m.Quantity).Where(m => m.DateCreated.Month == monthDate).Take(5).ToList();
+                reportList = _db.StockHistories.OrderByDescending(m => m.Quantity).Where(m => m.DateCreated.Month == monthDate && m.CompanyId==companyId).Take(5).ToList();
+            }
+            else if(duration=="year")
+            {
+                var yearDate = DateTime.Now.Year;
+                reportList = _db.StockHistories.OrderByDescending(m=>m.Quantity).Where(m => m.DateCreated.Year == yearDate && m.CompanyId == companyId).Take(5).ToList();
             }
             else
             {
-                var yearDate = DateTime.Now.Year;
-                reportList = _db.StockHistories.OrderByDescending(m=>m.Quantity).Where(m => m.DateCreated.Year == yearDate).Take(5).ToList();
+                reportList = _db.StockHistories.OrderByDescending(m => m.Quantity).Where(m =>  m.CompanyId == companyId).Take(5).ToList();
             }
             var chartObjList = new List<CustomChart>();
             foreach (var xx in _db.Inventories)

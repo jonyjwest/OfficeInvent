@@ -13,6 +13,7 @@ public partial class Admin_Dashboard : System.Web.UI.Page
     {
         if (!IsPostBack)
         {
+            LoadLabels();
             BindLowStock();
             BindRequest();
         }
@@ -22,11 +23,24 @@ public partial class Admin_Dashboard : System.Web.UI.Page
         
         try
         {
-            if (Session["LogedinuserId"] == null)
+            if (Session["LogedinuserId"] == null || Session["CompanyId"]==null)
             {
                 Response.Redirect("~/login.aspx");
             }
-           
+            try
+            {
+                int companyId = int.Parse(Session["CompanyId"].ToString());
+                 var coyInventory= _db.Inventories.Where(m => m.CompanyId == companyId);
+                lblLowStock.Text = coyInventory.Where(m => m.Quantity <= m.ReorderLevel).Count().ToString() ;
+                lblCheckoutItem.Text = _db.StockHistories.Where(m => m.CompanyId == companyId && m.DateCreated == DateTime.Now).Count().ToString();
+                lblOutofStock.Text= coyInventory.Where(m => m.Quantity <1).Count().ToString();
+                lblPermision.InnerText = _db.UserRequests.Where(m => m.CompanyId == companyId && m.Status == 1).Count().ToString();
+            }
+            catch (Exception ex)
+            {
+               
+            }
+
         }
         catch (Exception ex)
         {
@@ -39,7 +53,8 @@ public partial class Admin_Dashboard : System.Web.UI.Page
     
     private void BindLowStock()
     {
-        var stockList = _db.Inventories.ToList();
+        int companyId = int.Parse(Session["CompanyId"].ToString());
+        var stockList = _db.Inventories.Where(m=>m.CompanyId==companyId && m.Quantity<m.ReorderLevel).ToList();
         if (!stockList.Any())
         {
             grdStock.DataSource = new List<Inventory>();
@@ -55,7 +70,8 @@ public partial class Admin_Dashboard : System.Web.UI.Page
 
     private void BindRequest()
     {
-        var stockList = _db.UserRequests.ToList();
+        int companyId = int.Parse(Session["CompanyId"].ToString());
+        var stockList = _db.UserRequests.Where(m=>m.CompanyId==companyId && m.Status==1).ToList();
         if (!stockList.Any())
         {
             GrdItemRequest.DataSource = new List<UserRequest>();

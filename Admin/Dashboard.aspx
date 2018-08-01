@@ -155,10 +155,22 @@
        <div class="col-md-12">
          <div class="col-md-6">
 
+               <div class="panel panel-default">
+                <div class="panel-heading" style="text-align: right; padding:5px 15px;color:#00a551">
+                    Select a range: &nbsp;
+            <select id="range1" onchange="GetICategogry(this.value)" style="border: 1px solid #aaa; margin: 2px 3px 0 0; -webkit-border-radius: 2px; cursor: pointer; width: 100px;" class="tftype2">
+                <option value="month">This Month</option>
+                <option value="year" selected="selected">This Year</option>
+            </select>
+                </div>
+                <div class="panel-body">
+                    <div id="ContainerCategory" style="min-width: 100%; height: 300px; margin: 0 auto"></div>
+                </div>
+            </div>
               <div class="panel panel-default">
                 <div class="panel-heading" style="text-align: right; padding:5px 15px;color:#00a551">
                     Select a range: &nbsp;
-            <select id="range5" onchange="getChartTopReportedProduct(this.value)" style="border: 1px solid #aaa; margin: 2px 3px 0 0; -webkit-border-radius: 2px; cursor: pointer; width: 100px;" class="tftype2">
+            <select id="range2" onchange="getChartTopReportedProduct(this.value)" style="border: 1px solid #aaa; margin: 2px 3px 0 0; -webkit-border-radius: 2px; cursor: pointer; width: 100px;" class="tftype2">
                 <option value="month">This Month</option>
                 <option value="year" selected="selected">This Year</option>
             </select>
@@ -168,18 +180,7 @@
                 </div>
             </div>
 
-            <div class="panel panel-default">
-                <div class="panel-heading" style="text-align: right; padding:5px 15px;color:#00a551">
-                    Select a range: &nbsp;
-            <select id="range4" onchange="GetICategogry(this.value)" style="border: 1px solid #aaa; margin: 2px 3px 0 0; -webkit-border-radius: 2px; cursor: pointer; width: 100px;" class="tftype2">
-                <option value="month">This Month</option>
-                <option value="year" selected="selected">This Year</option>
-            </select>
-                </div>
-                <div class="panel-body">
-                    <div id="ContainerCategory" style="min-width: 100%; height: 300px; margin: 0 auto"></div>
-                </div>
-            </div>
+          
 
         </div>
         <div class="col-md-4">
@@ -218,7 +219,7 @@
                                     <HeaderStyle CssClass="text-left" />
                                     <ItemStyle CssClass="text-left" />
                                     <ItemTemplate>
-                                 <asp:LinkButton ID="btnEdit" CommandArgument='<%#Eval("UserRequestId") %>'  ClientIDMode="Static" CausesValidation="False"    CssClass="btn btn-xs btn-success" runat="server"><i class="fa fa-edit"></i>Respond</asp:LinkButton> 
+                                 <asp:LinkButton ID="btnEdit" CommandArgument='<%#Eval("UserRequestId") %>'  ClientIDMode="Static" CausesValidation="False"    CssClass="btn btn-xs btn-primary" runat="server"><i class="fa fa-edit"></i>Respond</asp:LinkButton> 
                                        </ItemTemplate>
                                      </asp:TemplateField>
                             </Columns>
@@ -367,7 +368,7 @@
    
     </div>
 
-     <div class="row" >
+    <%-- <div class="row" >
     <div class="col-md-12">
        
             <div class="panel panel-success" style="margin-top: 20px;">
@@ -390,7 +391,7 @@
 
     </div>
 
-</div>
+</div>--%>
 
     <script>
       $(function () {
@@ -432,7 +433,7 @@
                     renderTo: 'ContainTopUse'
                 },
                 title: {
-                    text: ''
+                    text: 'Most Used Items'
                 },
                 subtitle: {
                     text: ''
@@ -472,7 +473,7 @@
                 series: [{
                     name: 'Quantity Used',
                     data: [],
-                     color: '#78cd51'
+                     
               
                    
 
@@ -504,19 +505,17 @@
 </script>
  <script>
         $(function () {
-            //getChartDataProduct("month");
-            //getChartDataBuyer("month");
-            //getChartDataRegistration("year");
+          
             GetICategogry("year");
      })
 
-        function GetICategogry(type)
+        function GetICategogry(range)
         {
             $.ajax(
               {
                   type: "POST",
                   url: "<%: ResolveUrl("~/OfficeInventWebservice.asmx/StockByCategoryPie") %>",
-                  data: JSON.stringify({ type: type }),
+                  data: JSON.stringify({ duration: range }),
                   contentType: "application/json; charset=utf-8",
                   async: true,
                   cache: true,
