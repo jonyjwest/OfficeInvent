@@ -401,7 +401,23 @@
 </div>--%>
 
     <script>
-      $(function () {
+        $(function () {
+           if (!Highcharts.charts.length) {
+                      Highcharts.getOptions().colors = Highcharts.map(Highcharts.getOptions().colors, function (color) {
+                          return {
+                              radialGradient: {
+                                  cx: 0.5,
+                                  cy: 0.3,
+                                  r: 0.7
+                              },
+                              stops: [
+                                  [0, color],
+                                  [1, Highcharts.Color(color).brighten(-0.3).get('rgb')] // darken
+                              ]
+                          };
+                      });
+            }
+            GetICategogry("year")
             getChartTopReportedProduct("year");
         });
 
@@ -506,17 +522,7 @@
 
 
     
-
-
-    
-</script>
- <script>
-        $(function () {
-          
-            GetICategogry("year");
-     })
-
-        function GetICategogry(range)
+         function GetICategogry(range)
         {
             $.ajax(
               {
@@ -535,21 +541,7 @@
           function rendercdPieChart(responsech) {
               var serObj = responsech.d.catJson;
               $(function () {
-                  if (!Highcharts.charts.length) {
-                      Highcharts.getOptions().colors = Highcharts.map(Highcharts.getOptions().colors, function (color) {
-                          return {
-                              radialGradient: {
-                                  cx: 0.5,
-                                  cy: 0.3,
-                                  r: 0.7
-                              },
-                              stops: [
-                                  [0, color],
-                                  [1, Highcharts.Color(color).brighten(-0.3).get('rgb')] // darken
-                              ]
-                          };
-                      });
-                  }
+                 
                   var options = {
                       chart: {
                           renderTo: 'ContainerCategory',
@@ -602,7 +594,13 @@
             );
           }
 
-    </script>
+    
+</script>
+ 
+
+       
+
+   
     
        
 </asp:Content>
