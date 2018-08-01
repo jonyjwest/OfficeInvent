@@ -54,7 +54,7 @@ public partial class Admin_Dashboard : System.Web.UI.Page
     private void BindLowStock()
     {
         int companyId = int.Parse(Session["CompanyId"].ToString());
-        var stockList = _db.Inventories.Where(m=>m.CompanyId==companyId && m.Quantity<m.ReorderLevel).ToList();
+        var stockList = _db.Inventories.OrderByDescending(m=>m.DateCreated).Where(m=>m.CompanyId==companyId && m.Quantity<m.ReorderLevel).Take(10).ToList();
         if (!stockList.Any())
         {
             grdStock.DataSource = new List<Inventory>();
@@ -71,7 +71,7 @@ public partial class Admin_Dashboard : System.Web.UI.Page
     private void BindRequest()
     {
         int companyId = int.Parse(Session["CompanyId"].ToString());
-        var stockList = _db.UserRequests.Where(m=>m.CompanyId==companyId && m.Status==1).ToList();
+        var stockList = _db.UserRequests.OrderByDescending(m => m.DateCreated).Where(m=>m.CompanyId==companyId && m.Status==1).Take(10).ToList();
         if (!stockList.Any())
         {
             GrdItemRequest.DataSource = new List<UserRequest>();

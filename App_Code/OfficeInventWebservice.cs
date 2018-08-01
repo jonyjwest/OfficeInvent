@@ -113,44 +113,39 @@ public class OfficeInventWebservice : System.Web.Services.WebService
             }
             int companyId = int.Parse(Session["CompanyId"].ToString());
             var reportList = new List<StockHistory>();
+            var inventoryList = _db.Inventories.Where(m => m.CompanyId == companyId);
+           
 
-            if (duration == "month")
-            {
-                var monthDate = DateTime.Now.Month;
-               
-                reportList = _db.StockHistories.OrderByDescending(m => m.Quantity).Where(m => m.DateCreated.Month == monthDate && m.CompanyId==companyId).Take(5).ToList();
-            }
-            else if(duration=="year")
-            {
-                var yearDate = DateTime.Now.Year;
-                reportList = _db.StockHistories.OrderByDescending(m=>m.Quantity).Where(m => m.DateCreated.Year == yearDate && m.CompanyId == companyId).Take(5).ToList();
-            }
-            else
-            {
-                reportList = _db.StockHistories.OrderByDescending(m => m.Quantity).Where(m =>  m.CompanyId == companyId).Take(5).ToList();
-            }
+           
             var chartObjList = new List<CustomChart>();
-            foreach (var xx in _db.Inventories)
+            foreach (var useItem in inventoryList)
             {
-
-                var reportsData = reportList.Where(m => m.InventoryId==xx.InventoryId).ToList();
-
-
-                if (reportsData.Any())
+                if (duration == "month")
                 {
-                    var chartObj = new CustomChart
-                    {
-                        name = xx.Stock.Name,
-                        z = xx.Quantity
+                    var monthDate = DateTime.Now.Month;
 
-                    };
-
-                    chartObjList.Add(chartObj);
+                    reportList = _db.StockHistories.OrderByDescending(m => m.Quantity).Where(m => m.DateCreated.Month == monthDate && m.CompanyId == companyId && m.InventoryId == useItem.InventoryId).ToList();
                 }
+                else if (duration == "year")
+                {
+                    var yearDate = DateTime.Now.Year;
+                    reportList = _db.StockHistories.OrderByDescending(m => m.Quantity).Where(m => m.DateCreated.Year == yearDate && m.CompanyId == companyId && m.InventoryId == useItem.InventoryId).ToList();
+                }
+                else
+                {
+                    reportList = _db.StockHistories.OrderByDescending(m => m.Quantity).Where(m => m.CompanyId == companyId && m.InventoryId == useItem.InventoryId).ToList();
+                }
+               
+                var chartObj = new CustomChart
+                {
+                    name = useItem.Stock.Name,
+                    z = reportList.Count()
 
+                };
 
-
+                chartObjList.Add(chartObj);
             }
+          
 
             return new
             {

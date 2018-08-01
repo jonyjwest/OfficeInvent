@@ -153,7 +153,7 @@
     
   <div class="row" >
        <div class="col-md-12">
-         <div class="col-md-6">
+         <div class="col-md-5">
 
                <div class="panel panel-default">
                 <div class="panel-heading" style="text-align: right; padding:5px 15px;color:#00a551">
@@ -164,7 +164,7 @@
             </select>
                 </div>
                 <div class="panel-body">
-                    <div id="ContainerCategory" style="min-width: 100%; height: 300px; margin: 0 auto"></div>
+                    <div id="ContainerCategory" style="min-width: 100%; height: 313px; margin: 0 auto"></div>
                 </div>
             </div>
               <div class="panel panel-default">
@@ -176,19 +176,19 @@
             </select>
                 </div>
                 <div class="panel-body">
-                    <div id="ContainTopUse" style="min-width: 100%; height: 300px; margin: 0 auto"></div>
+                    <div id="ContainTopUse" style="min-width: 100%; height: 313px; margin: 0 auto"></div>
                 </div>
             </div>
 
           
 
         </div>
-        <div class="col-md-4">
-           <div class="box box-primary" style="margin-bottom:15px;">
+        <div class="col-md-5">
+           <div class="box box-primary" style="margin-bottom:25px;">
                     <div  class="box-header-dash">
                         <span class="box-title">Recent Request</span>
                     </div>
-                    <div class="box-body" style="border:#ccc solid 1px;height:328px">
+                    <div class="box-body" style="border:#ccc solid 1px;height:338px">
                         <asp:GridView ShowHeader="true"
                             ID="GrdItemRequest" BackColor="White"
                             runat="server"
@@ -204,7 +204,14 @@
                                     <HeaderStyle CssClass="text-left" />
                                     <ItemStyle CssClass="text-left" />
                                     <ItemTemplate>
-                                         <%# DataBinder.Eval(Container.DataItem,"AspNetUser.FullName").ToString().ToUpper() %>
+                                         <%# DataBinder.Eval(Container.DataItem,"AspNetUser.FullName").ToString() %>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                  <asp:TemplateField HeaderText="Item">
+                                    <HeaderStyle CssClass="text-left" />
+                                    <ItemStyle CssClass="text-left" />
+                                    <ItemTemplate>
+                                         <%# DataBinder.Eval(Container.DataItem,"Inventory.Stock.Name").ToString() %>
                                     </ItemTemplate>
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="Quantity">
@@ -233,7 +240,7 @@
                     <div  class="box-header-dash">
                         <span class="box-title">Item out of Stock</span>
                     </div>
-                    <div class="box-body" style="border:#ccc solid 1px;height:328px">
+                    <div class="box-body" style="border:#ccc solid 1px;height:338px">
                           <asp:GridView ShowHeader="false"
                             ID="grdStock" BackColor="White"
                             runat="server"
@@ -303,7 +310,7 @@
                                  <i class="fa fa-archive fa-3x"  style="color:#00a551" aria-hidden="true"></i>
                             </div>
                             <div class="col-xs-9 text-right">
-                                <div class="huge" id="spnTOrders" runat="server"><b>3
+                                <div class="huge" id="spnTOrders" runat="server"><b>
                                     <asp:Label ID="Label3" runat="server"></asp:Label><asp:Label ID="lblOutofStock" Style="font-size: 11px" runat="server"></asp:Label></b></div>
                                
                             </div>
@@ -324,7 +331,7 @@
                                 <i class="fa fa-level-down fa-3x" aria-hidden="true" style="color:#32b85a"></i>
                             </div>
                             <div class="col-xs-9 text-right">
-                                <div class="huge" id="spnPending" runat="server"><b>3
+                                <div class="huge" id="spnPending" runat="server"><b>
                                     <asp:Label ID="Label5" runat="server"></asp:Label><asp:Label ID="lblLowStock" Style="font-size: 11px" runat="server"></asp:Label></b></div>
                                 
                             </div>
